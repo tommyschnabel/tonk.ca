@@ -30,6 +30,7 @@ for file in ${files[@]}; do
     echo "Unzipping $target..."
     unzip -o $target -d "$(dirname $target)"
     rm $resultPDF # not needed
+    zip ./results.zip $extracted
 
     echo -e "Finished with $file\n\n"
 done
