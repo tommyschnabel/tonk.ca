@@ -1,0 +1,238 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+
+<html>
+
+	<head>
+		<meta http-equiv="content-type" content="text/html;charset=iso-8859-1">
+		<title>GDL-AN-023</title>
+	</head>
+
+	<body>
+		<h2>
+			<center>
+				Actuator and Wiring Check<br>
+			</center>
+		</h2>
+		<h4>
+			<center>
+				(Please do this before installing a remanufactured amplifier)</center>
+		</h4>
+		<center>
+			<hr>
+		</center>
+		<p><b>Please note that these ideas and procedures are for someone who has the time, inclination and technical ability to understand and follow them. There are other alternatives. We can generally tell you, over the phone or by email, what is wrong with your system if you let us know what the symptoms are. Or, naturally, you can have your favorite local qualified mechanic perform the work. Please do not hesitate to email or call us if you have questions or concerns.<br>
+			</b></p>
+		<p>This procedure is very important to ensure safe installation of Cruise Control Amplifiers vehicles manufactured from 1981 through Present. Even though these Amps are reasonably hardy, excessive current draw from the Amplifier Output Section can blow the power transistors, fuse circuit board traces, melt solder joints and burn the pc board! The couple minutes it takes to perform this procedure may save hours of Cruise Control System down-time, troubleshooting and, naturally, the cost of replacing blown Amplifiers. <b>This procedure does not guarantee the system will work</b> it only minimizes the possibility of blowing the Amplifier and can point to several obvious actuator malfunctions. The actuator could still be non-functional: worn traces, broken gears, etc. <b><i>Please perform even if installing a new Actuator!</i> There is a failure mode in the actuator that can cause catastrophic failure of the amplifier:</b> The motor armature can fail with opposing commutator contacts shorted; this will cause excessive current draw and melt the output section of the amplifier. (See Step 3 below.)</p>
+		<p>** If in a hurry please perform at least Step 3 - it's easy and quick! **</p>
+		<p></p>
+		<center>
+			<table border="5" cellspacing="5" cellpadding="5">
+				<tr>
+					<th>Amplifier Pin</th>
+					<th>description</th>
+					<th>Actuator Pin</th>
+					<th>description</th>
+				</tr>
+				<tr>
+					<td>1</td>
+					<td>Power: 12Vdc</td>
+					<td width="25%">&nbsp;</td>
+					<td width="25%">&nbsp;</td>
+				</tr>
+				<tr>
+					<td>2</td>
+					<td>Decel/Set (from switch)</td>
+					<td width="25%">&nbsp;</td>
+					<td width="25%">&nbsp;</td>
+				</tr>
+				<tr>
+					<td>3</td>
+					<td>On/Off (from switch)</td>
+					<td width="25%">&nbsp;</td>
+					<td width="25%">&nbsp;</td>
+				</tr>
+				<tr>
+					<td>4</td>
+					<td>Accel/Set (from switch)</td>
+					<td width="25%">&nbsp;</td>
+					<td width="25%">&nbsp;</td>
+				</tr>
+				<tr>
+					<td>5</td>
+					<td>Actuator Engage Solenoid (output)</td>
+					<td>7</td>
+					<td>Engage Solenoid</td>
+				</tr>
+				<tr>
+					<td>6</td>
+					<td>Resume (from switch)</td>
+					<td width="25%">&nbsp;</td>
+					<td width="25%">&nbsp;</td>
+				</tr>
+				<tr>
+					<td>7</td>
+					<td>Motor Control</td>
+					<td>4</td>
+					<td>Motor Brush</td>
+				</tr>
+				<tr>
+					<td>8</td>
+					<td>Brake Disengage (brake light bulbs)</td>
+					<td width="25%">&nbsp;</td>
+					<td width="25%">&nbsp;</td>
+				</tr>
+				<tr>
+					<td>9</td>
+					<td>Actuator Positional Feedback</td>
+					<td>3</td>
+					<td>Potentiometer End</td>
+				</tr>
+				<tr>
+					<td>10</td>
+					<td>Motor Control (output)</td>
+					<td>5</td>
+					<td>Motor Brush</td>
+				</tr>
+				<tr>
+					<td>11</td>
+					<td>Speed Input (from transducer)</td>
+					<td width="25%">&nbsp;</td>
+					<td width="25%">&nbsp;</td>
+				</tr>
+				<tr>
+					<td>12</td>
+					<td>Ground</td>
+					<td>1, 6</td>
+					<td>Grounds</td>
+				</tr>
+				<tr>
+					<td>13</td>
+					<td>Actuator Positional Feedback</td>
+					<td>2</td>
+					<td>Potentiometer Wiper</td>
+				</tr>
+				<tr>
+					<td>14</td>
+					<td>Ground</td>
+					<td width="25%">&nbsp;</td>
+					<td width="25%">&nbsp;</td>
+				</tr>
+			</table>
+		</center>
+		<ul>
+			<li>Step 1: Check continuity between corresponding Amplifier and Actuator pins, Ignition Switch OFF (easiest with two people)
+				<p>&nbsp;</p>
+			<li>Step 2: The following readings are made at the female Amplifier Plug, Ignition Switch OFF
+				
+				<p>&nbsp;</p>
+				<center>
+					<table border="5" cellspacing="5" cellpadding="5">
+						<tr>
+							<th>From Pin</th>
+							<th>To Pin</th>
+							<th>Actuator</th>
+							<th>Amplifier</th>
+							<th>Resistance</th>
+						</tr>
+						<tr>
+							<th>Number</th>
+							<th>Number</th>
+							<th>Plugged in?</th>
+							<th>Plugged in?</th>
+							<th>in ohms</th>
+						</tr>
+						<tr>
+							<td>7</td>
+							<td>10</td>
+							<td>yes</td>
+							<td>no</td>
+							<td>3 to 30 ohms (not 0 ohms!)</td>
+						</tr>
+						<tr>
+							<td>7</td>
+							<td>gnd (12)</td>
+							<td>yes</td>
+							<td>no</td>
+							<td>infinity</td>
+						</tr>
+						<tr>
+							<td>10</td>
+							<td>gnd (12)</td>
+							<td>yes</td>
+							<td>no</td>
+							<td>infinity</td>
+						</tr>
+						<tr>
+							<td>5</td>
+							<td>gnd (12)</td>
+							<td>yes</td>
+							<td>no</td>
+							<td>infinity 002 545 86 32 (or) ~40 ohms 001 545 75 32</td>
+						</tr>
+						<tr>
+							<td>9</td>
+							<td>gnd (12)</td>
+							<td>yes</td>
+							<td>no</td>
+							<td>3.4 K ohms &plusmn;0.6 K ohms</td>
+						</tr>
+						<tr>
+							<td>9</td>
+							<td>13</td>
+							<td>yes</td>
+							<td>no</td>
+							<td>0 ohms approx.</td>
+						</tr>
+					</table>
+				</center>
+				<p>&nbsp;</p>
+			
+				
+			<li>Step 3: <b>THIS IS A CRITICAL TEST</b> This is performed at the actuator plug (unplugged from the vehicle) Ignition Switch OFF<br>
+				<p>&nbsp;</p>
+				<p>It is usually not necessary to disconnect the throttle linkage because the solenoid will not engage. This test runs the actuator motor in both directions and checks the current draw of the armature. It should be <b><i>between</i> 120 mAdc and 180 mAdc A shorted armature can draw a couple amps and blow the output section of any amplifier.</b> Please do not plug in Amplifier if readings are out of tolerance.<br>
+				</p>
+				<p>&nbsp;</p>
+				<p>Use a current-limited 13.8 Vdc Power Supply with a series DC Ammeter. Connect between pins 4 and 5 of the actuator plug. The motor should spin (audibly) and be relatively quiet, smooth and strong, current draw about 130 mA dc. It should not rattle, chug, make excessive noise or draw high current. Reverse the connections to pins 4 and 5 and test spin the other direction.<br>
+				</p>
+				<p>&nbsp;</p>
+			<li>Step 4: This is performed at the actuator plug (unplugged from the vehicle) Ignition Switch OFF<br>
+				<p>&nbsp;</p>
+				<p>This tests the actuator engage solenoid. Apply 13.8 Vdc to pin 7 of the actuator, common to pin 6. The solenoid should activate (audible click.)</p>
+		</ul>
+		<p></p>
+		<center></center>
+		<center>
+			<hr>
+		</center>
+		<h4>Back to Cruise System Test - Table of Contents</h4>
+		<h5>
+			<center>
+				General Development Laboratories<br>
+				3041 Sandalwood Avenue<br>
+				Morro Bay, CA 93442<br>
+				<br>
+				805 772-5127<br>
+				<!--
+var first = 'ma';
+var second = 'il';
+var third = 'to:';
+var address = '&#104;&#101;&#108;&#112;';
+var domain = '&#103;&#100;&#108;&#45;&#111;&#110;&#108;&#105;&#110;&#101;&#46;&#99;&#111;&#109;';
+document.write('<a href="');
+document.write(first+second+third);
+document.write(address);
+document.write('&#64;');
+document.write(domain);
+document.write('" title="General Development Laboratories">');
+document.write('<IMG SRC="penemail2.gif" BORDER=0 ALIGN=CENTER><br>');
+document.write('<br>');
+document.write('please email us if you have questions or concerns<br>');
+document.write('we try to answer quickly (just click here)<\/a>');
+// --></SCRIPT?><br>
+				<br>
+			</center>
+		</h5>
+	</body>
+
+</html>
