@@ -6,3 +6,4 @@ out
 vendor
 index.bleve/
 .continue
+search/search_server
