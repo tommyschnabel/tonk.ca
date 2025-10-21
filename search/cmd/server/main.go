@@ -5,22 +5,26 @@ import (
 	"fmt"
 	"log"
 	"net/http"
+	"os"
 
 	"github.com/blevesearch/bleve"
 )
 
-const (
-	indexFile = "./index.bleve"
-	port      = 8080
-)
+const port = 8080
+var indexPath = "./index.bleve"
 
 type SearchRequest struct {
 	Query string `json:"query"`
 }
 
 func main() {
+	if len(os.Args) > 1 {
+		indexPath = os.Args[1]
+		log.Printf("Using %s as index path\n", indexPath)
+	}
+
 	// Open the Bleve index
-	index, err := bleve.Open(indexFile)
+	index, err := bleve.Open(indexPath)
 	if err != nil {
 		log.Fatal(err)
 	}

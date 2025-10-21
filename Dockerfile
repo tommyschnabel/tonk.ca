@@ -13,6 +13,6 @@ COPY static /static
 # Search
 COPY --from=builder /search/search_server /search_server
 COPY --from=builder /search/index.bleve /index.bleve
-
-# 
-# COPY root/ /root-layer/
+ 
+# s6-rc services
+COPY root/ /
