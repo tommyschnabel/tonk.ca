@@ -16,7 +16,7 @@ const (
 func main() {
 	if len(os.Args) < 2 {
 		fmt.Printf("Usage: %s <file_list>\n", os.Args[0])
-		os.Exit(0)
+		os.Exit(1)
 	}
 	var index bleve.Index
 
