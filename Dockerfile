@@ -19,5 +19,3 @@ COPY nginx.conf /etc/nginx/nginx.conf
 
 # s6-rc services
 COPY root/ /
-
-ENTRYPOINT [ "/usr/sbin/nginx" ]
