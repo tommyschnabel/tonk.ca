@@ -1,53 +1,124 @@
-<HTML>  
-<HEAD>
-  <META HTTP-EQUIV="content-type" CONTENT="text/html;charset=iso-8859-1">
-  <TITLE>Search Model 107</TITLE>
-</HEAD>
-<BODY BGCOLOR="#000000" TEXT="#0000ff" LINK="#66ccff" VLINK="#ff9999"
-ALINK="#cccccc">
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Search Model 107</title>
+    <style>
+        body {
+            background-color: #000000;
+            color: #0000ff;
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        a {
+            color: #66ccff;
+        }
+        a:visited {
+            color: #ff9999;
+        }
+        a:active {
+            color: #cccccc;
+        }
+        .search-container {
+            text-align: center;
+            margin: 20px auto;
+            max-width: 600px;
+        }
+        .search-input {
+            width: 80%;
+            padding: 10px;
+            margin: 10px;
+            font-size: 16px;
+        }
+        .search-button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #0099ff;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        .results {
+            margin: 20px auto;
+            max-width: 800px;
+        }
+        .result-item {
+            margin: 10px 0;
+            padding: 10px;
+            border: 1px solid #0099ff;
+        }
+    </style>
+</head>
+<body>
+    <h2><center>
+        <hr>
+        <span style="color: #0099ff; font-size: larger;">Mercedes-Benz Model 107<br>
+        Maintenance Manuals Search</span><br>
+    </center></h2>
 
-<H2><CENTER><FONT SIZE="+3"><HR></FONT><FONT COLOR="#0099ff" SIZE="+3">Mercedes-Benz
-Model 107 <BR>
-Maintenance Manuals Search</FONT><TT><BR CLEAR="ALL"></TT></CENTER></H2>
+    <div class="search-container">
+        <input type="text" id="searchInput" class="search-input" placeholder="Enter search terms...">
+        <button onclick="performSearch()" class="search-button">Search</button>
+    </div>
 
-<HR ALIGN=LEFT>
+    <div id="searchResults" class="results"></div>
 
-<BLOCKQUOTE>
-  <BLOCKQUOTE>
-    <P><FONT COLOR="#99ccff" SIZE="+1">These Index files do not presently
-    have a search engine built in. We are working on one. In the
-    meantime, there is a way for you to add the search function IF:</FONT></P>
-    <OL>
-      <LI><FONT COLOR="#99ccff" SIZE="+1">you understand the rudiments
-      of adding already-written html code to page,</FONT>
-      <LI><FONT COLOR="#99ccff" SIZE="+1">you have a connection to
-      the internet (perferrably persistant),</FONT>
-      <LI><FONT COLOR="#99ccff" SIZE="+1">you have personal web sharing
-      enabled on your computer, and</FONT>
-      <LI><FONT COLOR="#99ccff" SIZE="+1">you are willing to subscribe
-      to a free search engine provider like www.atomz.com.</FONT>
-    </OL>
-    <P><FONT COLOR="#99ccff" SIZE="+1">Go to </FONT><FONT SIZE="+1"><A
-    HREF="http://www.atomz.com/">Atomz</A></FONT><FONT COLOR="#99ccff"
-     SIZE="+1"> for information on how to make the Search function
-    work. See the Search Buyer's Kit. What you will end up with is
-    something like what you see in this example pictured below.</FONT></P>
-    <H2><FONT COLOR="#99ccff"><IMG SRC="Resources/SearchPicture.jpg"
-    HEIGHT="396" WIDTH="536" ALIGN="BOTTOM" BORDER="0"></FONT></H2>
-  </BLOCKQUOTE>
-</BLOCKQUOTE>
+    <hr>
+    <p><center>Copyright &copy; 2003, 2004 Steve Nervig.<br>All Rights Reserved</center></p>
 
-<P>&nbsp;</P>
+    <script>
+        async function performSearch() {
+            const searchInput = document.getElementById('searchInput');
+            const resultsDiv = document.getElementById('searchResults');
+            const query = searchInput.value.trim();
 
-<P><CENTER><HR><A HREF="../Main.html"><IMG SRC="Resources/BackToMain.jpg"
-HEIGHT="30" WIDTH="200" ALIGN="BOTTOM" BORDER="0"></A></CENTER></P>
+            if (!query) {
+                resultsDiv.innerHTML = '<p>Please enter a search term</p>';
+                return;
+            }
 
-<P><BR>
-<BR>
-</P>
+            try {
+                const response = await fetch('/search', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ query: query })
+                });
 
-<P><CENTER>Copyright &copy; 2003, 2004 Steve Nervig.<BR CLEAR="ALL">All
-Rights Reserved</CENTER>
+                const data = await response.json();
 
-</BODY>
-</HTML>
+                if (data.hits && data.hits.length > 0) {
+                    const resultsHtml = data.hits.map(hit => {
+                        // Remove the leading "static/" from the ID to create the proper link
+                        const path = hit.id.replace(/^static\//, '');
+                        return `
+                            <div class="result-item">
+                                <a href="/${path}">${path}</a>
+                                <div>Score: ${hit.score.toFixed(3)}</div>
+                            </div>
+                        `;
+                    }).join('');
+
+                    resultsDiv.innerHTML = `
+                        <h3>Found ${data.total_hits} results</h3>
+                        ${resultsHtml}
+                    `;
+                } else {
+                    resultsDiv.innerHTML = '<p>No results found</p>';
+                }
+            } catch (error) {
+                resultsDiv.innerHTML = '<p>Error performing search. Please try again.</p>';
+                console.error('Search error:', error);
+            }
+        }
+
+        // Allow Enter key to trigger search
+        document.getElementById('searchInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                performSearch();
+            }
+        });
+    </script>
+</body>
+</html>
