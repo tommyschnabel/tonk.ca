@@ -1,8 +1,17 @@
 FROM golang:1.25.1 AS builder
 
-# Search
+# Copy files
 COPY search /search
 COPY static /static
+COPY ocr/results.zip /
+
+# Install deps
+RUN apt update && apt install -y unzip
+
+# Unzip ocr results
+RUN unzip -:o /results.zip
+
+# Build index and search server
 RUN cd /search && make index build
 
 FROM ghcr.io/linuxserver/baseimage-ubuntu:noble

@@ -1,5 +1,8 @@
 
-.PHONY: index run
+.PHONY: index run unzipresults
+
+unzipresults:
+	cd .. && unzip ocr/results.zip
 
 index:
 	files=$$(find ../static/ -name "*_OCR.txt" | tr '\n' ' '); \
