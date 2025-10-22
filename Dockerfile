@@ -2,6 +2,7 @@ FROM golang:1.25.1 AS builder
 
 # Search
 COPY search /search
+COPY static /static
 RUN cd /search && make index build
 
 FROM ghcr.io/linuxserver/baseimage-ubuntu:noble
