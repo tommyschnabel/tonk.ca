@@ -2,7 +2,7 @@
 .PHONY: index run
 
 index:
-	files=$$(cd .. && find static/ -name "*_OCR.txt" | tr '\n' ' '); \
+	files=$$(find ../static/ -name "*_OCR.txt" | tr '\n' ' '); \
 	go run ./cmd/indexer/main.go $$files
 
 build:

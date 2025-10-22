@@ -10,7 +10,7 @@ import (
 
 const (
 	indexFile    = "./index.bleve"
-	repoRootPath = "../"
+	staticDir = "../static/"
 )
 
 func main() {
@@ -37,12 +37,13 @@ func main() {
 	fmt.Printf("Got %d files to index\n", len(files))
 	for _, f := range files {
 		fmt.Println(f)
-		bytes, err := os.ReadFile(repoRootPath + f)
+		bytes, err := os.ReadFile(f)
 		if err != nil {
 			panic(fmt.Sprintf("error reading file %s: %v", f, err))
 		}
 
 		targetName := strings.Split(f, "_OCR")[0] + ".pdf"
+		targetName = strings.Split(targetName, staticDir)[1]
 		_ = index.Delete(targetName)
 		index.Index(targetName, string(bytes))
 
